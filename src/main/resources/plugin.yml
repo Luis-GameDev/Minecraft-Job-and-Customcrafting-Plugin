@@ -1,4 +1,12 @@
+name: MinecraftPlugin
+version: 1.0
+main: MinecraftPlugin
+api-version: 1.20
 name: MyFirstPlugin
 version: 1.0
 main: MinecraftPlugin
 api-version: 1.20
+commands:
+  heal:
+    description: Heilt dich komplett
+    usage: /heal
