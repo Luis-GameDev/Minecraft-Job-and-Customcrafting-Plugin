@@ -9,8 +9,10 @@ public class MinecraftPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         getLogger().info("Plugin wurde aktiviert!");
-
-        // Event registrieren
+        XPManager xpManager = new XPManager(this);
+        getCommand("jobs").setExecutor(new JobsCommand(xpManager));
+                
+        Bukkit.getPluginManager().registerEvents(new JobsGUIListener(xpManager), this);
         Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), this);
     }
 
