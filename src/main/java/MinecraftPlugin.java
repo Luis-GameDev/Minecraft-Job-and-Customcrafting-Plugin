@@ -9,11 +9,18 @@ public class MinecraftPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         getLogger().info("Plugin wurde aktiviert!");
+        saveDefaultConfig();
         XPManager xpManager = new XPManager(this);
+        BossbarManager bossbarManager = new BossbarManager(this);
+        RecipeLoader recipeLoader = new RecipeLoader(this);
+
+        recipeLoader.loadAllRecipes();
         getCommand("jobs").setExecutor(new JobsCommand(xpManager));
-                
+
         Bukkit.getPluginManager().registerEvents(new JobsGUIListener(xpManager), this);
         Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), this);
+        Bukkit.getPluginManager().registerEvents(new JobXPListener(xpManager, bossbarManager, this), this);
+        Bukkit.getPluginManager().registerEvents(new CustomCraftingManager(recipeLoader, xpManager, this), this);
     }
 
     @Override

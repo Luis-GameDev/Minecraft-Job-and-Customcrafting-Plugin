@@ -1,0 +1,42 @@
+lumberjack_axe_tier1:
+  result:
+    material: IRON_AXE
+    display_name: "§Adepts Lumberjack Axe"
+    nbt_id: "lumberjack_axe_tier1"
+  shape:
+    - " WI"
+    - " SW"
+    - " S "
+  ingredients:
+    W:
+      material: OAK_LOG
+    I:
+      material: IRON_INGOT
+    S:
+      material: STICK
+  requirements:
+    job: LUMBERJACK
+    level: 0
+lumberjack_axe_tier2:
+  result:
+    material: IRON_AXE
+    display_name: "§Experts Lumberjack Axe"
+    nbt_id: "lumberjack_axe_tier2"
+    enchantments:
+      EFFICIENCY: 1
+  shape:
+    - " WI"
+    - " SW"
+    - " s "
+  ingredients:
+    W:
+      material: OAK_LOG
+    I:
+      material: DIAMOND
+    S:
+      material: STICK
+  requirements:
+    job: LUMBERJACK
+    level: 15
+
+

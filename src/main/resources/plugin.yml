@@ -10,3 +10,6 @@ commands:
   heal:
     description: Heilt dich komplett
     usage: /heal
+  jobs:
+    description: Öffnet das Job-Selection Menu
+    usage: /jobs select

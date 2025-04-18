@@ -1,8 +1,8 @@
 public class PlayerJobData {
     private JobType activeJob;
-    private int xp;
+    private double xp;
 
-    public PlayerJobData(JobType activeJob, int xp) {
+    public PlayerJobData(JobType activeJob, double xp) {
         this.activeJob = activeJob;
         this.xp = xp;
     }
@@ -15,15 +15,15 @@ public class PlayerJobData {
         this.activeJob = activeJob;
     }
 
-    public int getXp() {
+    public double getXp() {
         return xp;
     }
 
-    public void setXp(int xp) {
+    public void setXp(double xp) {
         this.xp = xp;
     }
 
-    public void addXp(int amount) {
+    public void addXp(double amount) {
         this.xp += amount;
     }
 }
