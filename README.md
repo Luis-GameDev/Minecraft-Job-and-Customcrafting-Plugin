@@ -28,9 +28,10 @@ A complete Minecraft plugin for a **job-based and level-based crafting system**,
 
 ## 🧰 Installation
 
-1. Place the plugin `.jar` into your `plugins/` folder
-2. Start the server to generate `recipes.yml`
-3. Configure your recipes inside `plugins/MinecraftPlugin/recipes.yml`
+1. Download the `MinecraftPlugin-1.0-SNAPSHOT.jar` from this repo
+2. Place the plugin `.jar` into your `plugins/` folder
+3. Start the server to generate `recipes.yml`
+4. Configure your recipes inside `plugins/MinecraftPlugin/recipes.yml`
 
 ---
 
