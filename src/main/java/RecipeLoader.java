@@ -1,13 +1,19 @@
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.*;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
-import java.io.File;
-import java.util.*;
 import org.bukkit.plugin.Plugin;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class RecipeLoader {
 
@@ -20,7 +26,9 @@ public class RecipeLoader {
 
     public void loadAllRecipes() {
         File file = new File(plugin.getDataFolder(), "recipes.yml");
-        if (!file.exists()) plugin.saveResource("recipes.yml", false);
+        if (!file.exists()) {
+            plugin.saveResource("recipes.yml", false);
+        }
 
         YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
 
@@ -31,6 +39,7 @@ public class RecipeLoader {
             CustomItemRecipe recipe = new CustomItemRecipe();
             recipe.id = id;
 
+            // Result
             ConfigurationSection result = section.getConfigurationSection("result");
             recipe.resultMaterial = Material.valueOf(result.getString("material"));
             recipe.displayName = result.getString("display_name");
@@ -48,8 +57,10 @@ public class RecipeLoader {
                 }
             }
 
+            // Shape
             recipe.shape = section.getStringList("shape");
 
+            // Ingredients
             recipe.ingredients = new HashMap<>();
             ConfigurationSection ing = section.getConfigurationSection("ingredients");
             for (String key : ing.getKeys(false)) {
@@ -57,16 +68,28 @@ public class RecipeLoader {
                 ConfigurationSection i = ing.getConfigurationSection(key);
                 Material mat = Material.valueOf(i.getString("material"));
                 String nbt = i.contains("nbt_id") ? i.getString("nbt_id") : null;
+
                 ItemIngredient ingredient = new ItemIngredient();
                 ingredient.material = mat;
                 ingredient.nbtKey = nbt;
+
                 recipe.ingredients.put(symbol, ingredient);
             }
 
+            // Requirements
             ConfigurationSection req = section.getConfigurationSection("requirements");
             recipe.requiredJob = JobType.valueOf(req.getString("job"));
             recipe.requiredLevel = req.getInt("level");
 
+            // Reward
+            if (section.contains("reward")) {
+                ConfigurationSection reward = section.getConfigurationSection("reward");
+                if (reward != null && reward.contains("xp")) {
+                    recipe.rewardXp = reward.getDouble("xp");
+                }
+            }
+
+            // Rezept speichern und registrieren
             loadedRecipes.put(recipe.nbtKey, recipe);
             registerRecipe(recipe);
         }
@@ -84,6 +107,7 @@ public class RecipeLoader {
             for (Map.Entry<Enchantment, Integer> entry : recipe.enchantments.entrySet()) {
                 meta.addEnchant(entry.getKey(), entry.getValue(), true);
             }
+
             result.setItemMeta(meta);
         }
 

@@ -17,6 +17,8 @@ lumberjack_axe_tier1:
   requirements:
     job: LUMBERJACK
     level: 0
+  reward:
+    xp: 5.0
 lumberjack_axe_tier2:
   result:
     material: IRON_AXE
@@ -38,5 +40,7 @@ lumberjack_axe_tier2:
   requirements:
     job: LUMBERJACK
     level: 15
+  reward:
+    xp: 10.0
 
 

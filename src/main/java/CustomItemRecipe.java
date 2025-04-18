@@ -14,4 +14,5 @@ public class CustomItemRecipe {
     public Map<Character, ItemIngredient> ingredients;
     public JobType requiredJob;
     public int requiredLevel;
+    public double rewardXp = 0.0;
 }
