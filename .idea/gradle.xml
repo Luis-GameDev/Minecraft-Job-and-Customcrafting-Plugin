@@ -12,6 +12,9 @@
           </set>
         </option>
       </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/MinecraftPlugin" />
+      </GradleProjectSettings>
     </option>
   </component>
 </project>
