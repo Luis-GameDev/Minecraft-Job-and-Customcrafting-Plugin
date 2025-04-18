@@ -1,4 +1,6 @@
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -8,7 +10,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.NamespacedKey;
 
 public class RecipeMenuListener implements Listener {
 
@@ -28,43 +29,47 @@ public class RecipeMenuListener implements Listener {
         Inventory inv = event.getInventory();
         String title = event.getView().getTitle();
 
-        if (title.startsWith("§8Recipes for")) {
+        if (title.startsWith("§8Rezepte für")) {
             event.setCancelled(true);
             ItemStack clicked = event.getCurrentItem();
             if (clicked == null || !clicked.hasItemMeta()) return;
 
-            String displayName = clicked.getItemMeta().getDisplayName();
+            ItemMeta meta = clicked.getItemMeta();
+            if (meta == null || !meta.hasDisplayName()) return;
 
-            if (displayName.equals("§7« Back")) {
+            String displayName = meta.getDisplayName();
+
+            // Navigation
+            if (displayName.equals("§7« Zurück")) {
                 int currentPage = RecipeOverviewGUI.getCurrentPage(player);
                 RecipeOverviewGUI.open(player, loader, xpManager, currentPage - 1);
                 return;
             }
 
-            if (displayName.equals("§7Next »")) {
+            if (displayName.equals("§7Weiter »")) {
                 int currentPage = RecipeOverviewGUI.getCurrentPage(player);
                 RecipeOverviewGUI.open(player, loader, xpManager, currentPage + 1);
                 return;
             }
 
-            ItemMeta meta = clicked.getItemMeta();
-            if (meta.getPersistentDataContainer().has(
-                    new NamespacedKey(plugin, "custom_item"), PersistentDataType.STRING)) {
+            // Detail-GUI öffnen
+            NamespacedKey key = new NamespacedKey(plugin, "custom_item");
+            if (!meta.getPersistentDataContainer().has(key, PersistentDataType.STRING)) return;
 
-                String id = meta.getPersistentDataContainer().get(
-                        new NamespacedKey(plugin, "custom_item"), PersistentDataType.STRING);
+            String id = meta.getPersistentDataContainer().get(key, PersistentDataType.STRING);
+            if (id == null) return;
 
-                CustomItemRecipe recipe = loader.loadedRecipes.get(id);
-                if (recipe != null) {
-                    RecipeViewerGUI.open(player, recipe, loader, xpManager);
-                }
+            CustomItemRecipe recipe = loader.loadedRecipes.get(id);
+            if (recipe != null) {
+                RecipeViewerGUI.open(player, recipe, loader, xpManager);
             }
 
-        } else if (title.equals("§8Recipe Preview")) {
+        } else if (title.equals("§8Rezeptvorschau")) {
             event.setCancelled(true);
             ItemStack clicked = event.getCurrentItem();
             if (clicked == null || clicked.getType() != Material.ARROW) return;
 
+            // Zurück zur vorherigen Übersicht
             RecipeOverviewGUI.open(player, loader, xpManager);
         }
     }

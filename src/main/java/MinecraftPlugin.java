@@ -18,6 +18,7 @@ public class MinecraftPlugin extends JavaPlugin {
         recipeLoader.loadAllRecipes();
         getCommand("jobs").setExecutor(new JobsCommand(xpManager));
         getCommand("jobsrecipes").setExecutor(new JobsRecipesCommand(recipeLoader, xpManager));
+        CustomItemRecipe.setPlugin(this);
 
         getServer().getPluginManager().registerEvents(new RecipeMenuListener(recipeLoader, xpManager, this), this);
         Bukkit.getPluginManager().registerEvents(new CraftItemListener(xpManager, recipeLoader, bossbarManager, this), this);

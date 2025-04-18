@@ -1,4 +1,3 @@
-// RecipeOverviewGUI.java
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -25,13 +24,6 @@ public class RecipeOverviewGUI {
                 .sorted(Comparator.comparingInt(r -> r.requiredLevel))
                 .toList());
 
-
-        for (CustomItemRecipe recipe : loader.loadedRecipes.values()) {
-            if (recipe.requiredJob == job) {
-                jobRecipes.add(recipe);
-            }
-        }
-
         int totalPages = (int) Math.ceil(jobRecipes.size() / (double) ITEMS_PER_PAGE);
         page = Math.max(0, Math.min(page, totalPages - 1));
         playerPageMap.put(player.getUniqueId(), page);
@@ -39,7 +31,6 @@ public class RecipeOverviewGUI {
         Inventory gui = Bukkit.createInventory(null, 54, "§8Rezepte für " + job.name() + " §7Seite " + (page + 1));
 
         int level = xpManager.getLevel(player.getUniqueId());
-
         int start = page * ITEMS_PER_PAGE;
         int end = Math.min(start + ITEMS_PER_PAGE, jobRecipes.size());
 
@@ -57,7 +48,7 @@ public class RecipeOverviewGUI {
             gui.setItem(i - start, displayItem);
         }
 
-        // Navigation buttons
+        // Navigation
         if (page > 0) {
             ItemStack back = new ItemStack(Material.ARROW);
             ItemMeta meta = back.getItemMeta();
@@ -85,4 +76,3 @@ public class RecipeOverviewGUI {
         return playerPageMap.getOrDefault(player.getUniqueId(), 0);
     }
 }
-
