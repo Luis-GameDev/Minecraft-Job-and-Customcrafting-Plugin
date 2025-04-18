@@ -20,7 +20,7 @@ public class BossbarManager {
         this.plugin = plugin;
     }
 
-    public void update(Player player, JobType job, double currentXp, double currentLevelXp, double nextLevelXp) {
+    public void update(Player player, JobType job, double currentXp, double currentLevelXp, double nextLevelXp, int level) {
         UUID uuid = player.getUniqueId();
         double progress = Math.min(1.0, (currentXp - currentLevelXp) / (nextLevelXp - currentLevelXp));
 
@@ -29,21 +29,20 @@ public class BossbarManager {
         if (bars.containsKey(uuid)) {
             bossBar = bars.get(uuid);
         } else {
-            bossBar = Bukkit.createBossBar(job.name(), BarColor.WHITE, BarStyle.SEGMENTED_10);
+            bossBar = Bukkit.createBossBar(job.name(), BarColor.GREEN, BarStyle.SEGMENTED_10);
             bossBar.addPlayer(player);
             bars.put(uuid, bossBar);
         }
 
         bossBar.setProgress(progress);
-        bossBar.setTitle("§f" + job.name() + " §7- §a" + String.format("%.1f", currentXp) + " XP");
+        bossBar.setTitle("§f" + job.name() + " §7(Level " + level + ") §8| §a" + String.format("%.1f", currentXp) + " XP");
         bossBar.setVisible(true);
 
-        // Vorherige Timer stoppen
+        // Timer reset
         if (timers.containsKey(uuid)) {
             timers.get(uuid).cancel();
         }
 
-        // Neuer Timer für 5 Sekunden
         BukkitRunnable hideTask = new BukkitRunnable() {
             @Override
             public void run() {
@@ -51,7 +50,7 @@ public class BossbarManager {
             }
         };
 
-        hideTask.runTaskLater(plugin, 20 * 5); // 5 Sekunden Verzögerung
+        hideTask.runTaskLater(plugin, 20 * 5); // 5 Sekunden
         timers.put(uuid, hideTask);
     }
 

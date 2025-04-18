@@ -13,14 +13,16 @@ public class MinecraftPlugin extends JavaPlugin {
         XPManager xpManager = new XPManager(this);
         BossbarManager bossbarManager = new BossbarManager(this);
         RecipeLoader recipeLoader = new RecipeLoader(this);
+        JobXPListener xpListener = new JobXPListener(xpManager, bossbarManager, recipeLoader, this);
 
         recipeLoader.loadAllRecipes();
         getCommand("jobs").setExecutor(new JobsCommand(xpManager));
 
         Bukkit.getPluginManager().registerEvents(new JobsGUIListener(xpManager), this);
         Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), this);
-        Bukkit.getPluginManager().registerEvents(new JobXPListener(xpManager, bossbarManager, this), this);
+        Bukkit.getPluginManager().registerEvents(new JobXPListener(xpManager, bossbarManager, recipeLoader, this), this);
         Bukkit.getPluginManager().registerEvents(new CustomCraftingManager(recipeLoader, xpManager, this), this);
+        Bukkit.getPluginManager().registerEvents(xpListener, this);
     }
 
     @Override

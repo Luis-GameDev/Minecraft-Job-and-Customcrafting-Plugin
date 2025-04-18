@@ -1,7 +1,7 @@
 lumberjack_axe_tier1:
   result:
     material: IRON_AXE
-    display_name: "§Adepts Lumberjack Axe"
+    display_name: "§a Adepts Lumberjack Axe"
     nbt_id: "lumberjack_axe_tier1"
   shape:
     - " WI"
@@ -20,14 +20,14 @@ lumberjack_axe_tier1:
 lumberjack_axe_tier2:
   result:
     material: IRON_AXE
-    display_name: "§Experts Lumberjack Axe"
+    display_name: "§a Experts Lumberjack Axe"
     nbt_id: "lumberjack_axe_tier2"
     enchantments:
       EFFICIENCY: 1
   shape:
     - " WI"
     - " SW"
-    - " s "
+    - " S "
   ingredients:
     W:
       material: OAK_LOG
