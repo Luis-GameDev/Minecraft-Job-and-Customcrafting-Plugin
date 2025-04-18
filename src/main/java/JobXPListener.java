@@ -61,10 +61,6 @@ public class JobXPListener implements Listener {
         double currentLevelXp = xpManager.getXpForLevel(currentLevel);
         double nextLevelXp = xpManager.getXpForLevel(currentLevel + 1);
 
-        // XP-Leiste im HUD
-        player.setLevel(currentLevel);
-        player.setExp((float) ((currentXp - currentLevelXp) / (nextLevelXp - currentLevelXp)));
-
         // Bossbar
         bossbarManager.update(player, job, currentXp, currentLevelXp, nextLevelXp, currentLevel);
 

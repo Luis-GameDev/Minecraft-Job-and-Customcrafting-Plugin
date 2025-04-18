@@ -13,3 +13,6 @@ commands:
   jobs:
     description: Öffnet das Job-Selection Menu
     usage: /jobs select
+  jobsrecipes:
+    description: Öffnet das Rezepte-GUI für deinen Job
+    usage: /jobsrecipes

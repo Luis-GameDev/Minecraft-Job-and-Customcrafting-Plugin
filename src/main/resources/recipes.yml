@@ -8,39 +8,322 @@ lumberjack_axe_tier1:
     - " SW"
     - " S "
   ingredients:
-    W:
-      material: OAK_LOG
-    I:
-      material: IRON_INGOT
-    S:
-      material: STICK
+    W: { material: OAK_LOG }
+    I: { material: IRON_INGOT }
+    S: { material: STICK }
   requirements:
     job: LUMBERJACK
     level: 0
   reward:
-    xp: 5.0
+    xp: 3.0
 lumberjack_axe_tier2:
   result:
     material: IRON_AXE
     display_name: "§a Experts Lumberjack Axe"
     nbt_id: "lumberjack_axe_tier2"
-    enchantments:
-      EFFICIENCY: 1
+    enchantments: { EFFICIENCY: 1 }
   shape:
     - " WI"
     - " SW"
     - " S "
   ingredients:
-    W:
-      material: OAK_LOG
-    I:
-      material: DIAMOND
-    S:
-      material: STICK
+    W: { material: OAK_LOG }
+    I: { material: DIAMOND }
+    S: { material: STICK }
   requirements:
     job: LUMBERJACK
     level: 15
   reward:
-    xp: 10.0
+    xp: 12.0
+lumberjack_axe_tier3:
+  result:
+    material: IRON_AXE
+    display_name: "§a Masters Lumberjack Axe"
+    nbt_id: "lumberjack_axe_tier3"
+    enchantments: { EFFICIENCY: 2, UNBREAKING: 1 }
+  shape:
+    - " WI"
+    - " SW"
+    - " S "
+  ingredients:
+    W: { material: BIRCH_LOG }
+    I: { material: DIAMOND }
+    S: { material: STICK }
+  requirements:
+    job: LUMBERJACK
+    level: 35
+  reward:
+    xp: 30.0
+lumberjack_axe_tier4:
+  result:
+    material: DIAMOND_AXE
+    display_name: "§a Grandmasters Lumberjack Axe"
+    nbt_id: "lumberjack_axe_tier4"
+    enchantments: { EFFICIENCY: 1, UNBREAKING: 1 }
+  shape:
+    - " WI"
+    - " SW"
+    - " S "
+  ingredients:
+    W: { material: SPRUCE_LOG }
+    I: { material: NETHERITE_INGOT }
+    S: { material: STICK }
+  requirements:
+    job: LUMBERJACK
+    level: 50
+  reward:
+    xp: 85.0
+lumberjack_axe_tier5:
+  result:
+    material: DIAMOND_AXE
+    display_name: "§a Elders Lumberjack Axe"
+    nbt_id: "lumberjack_axe_tier5"
+    enchantments: { EFFICIENCY: 2, UNBREAKING: 2 }
+  shape:
+    - " WI"
+    - " SW"
+    - " S "
+  ingredients:
+    W: { material: DARK_OAK_LOG }
+    I: { material: NETHERITE_INGOT }
+    S: { material: STICK }
+  requirements:
+    job: LUMBERJACK
+    level: 80
+  reward:
+    xp: 180.0
+lumberjack_axe_tier6:
+  result:
+    material: DIAMOND_AXE
+    display_name: "§c Legendary Lumberjack Axe"
+    nbt_id: "lumberjack_axe_tier6"
+    enchantments: { EFFICIENCY: 3, UNBREAKING: 3 }
+  shape:
+    - " WI"
+    - " SW"
+    - " S "
+  ingredients:
+    W: { material: CRIMSON_STEM }
+    I: { material: NETHERITE_BLOCK }
+    S: { material: STICK }
+  requirements:
+    job: LUMBERJACK
+    level: 100
+  reward:
+    xp: 350.0
 
+farmer_hoe_tier1:
+  result:
+    material: IRON_HOE
+    display_name: "§a Adepts Farmer Hoe"
+    nbt_id: "farmer_hoe_tier1"
+  shape:
+    - " WW"
+    - " S "
+    - " S "
+  ingredients:
+    W: { material: WHEAT }
+    S: { material: STICK }
+  requirements:
+    job: FARMER
+    level: 0
+  reward:
+    xp: 3.0
+farmer_hoe_tier2:
+  result:
+    material: IRON_HOE
+    display_name: "§a Experts Farmer Hoe"
+    nbt_id: "farmer_hoe_tier2"
+    enchantments: { EFFICIENCY: 1 }
+  shape:
+    - " WW"
+    - " S "
+    - " S "
+  ingredients:
+    W: { material: HAY_BLOCK }
+    S: { material: STICK }
+  requirements:
+    job: FARMER
+    level: 15
+  reward:
+    xp: 12.0
+farmer_hoe_tier3:
+  result:
+    material: IRON_HOE
+    display_name: "§a Masters Farmer Hoe"
+    nbt_id: "farmer_hoe_tier3"
+    enchantments: { EFFICIENCY: 2, UNBREAKING: 1 }
+  shape:
+    - " WW"
+    - " S "
+    - " S "
+  ingredients:
+    W: { material: GOLD_BLOCK }
+    S: { material: STICK }
+  requirements:
+    job: FARMER
+    level: 35
+  reward:
+    xp: 30.0
+farmer_hoe_tier4:
+  result:
+    material: DIAMOND_HOE
+    display_name: "§a Grandmasters Farmer Hoe"
+    nbt_id: "farmer_hoe_tier4"
+    enchantments: { EFFICIENCY: 1, UNBREAKING: 1 }
+  shape:
+    - " WW"
+    - " S "
+    - " S "
+  ingredients:
+    W: { material: DIAMOND_BLOCK }
+    S: { material: STICK }
+  requirements:
+    job: FARMER
+    level: 50
+  reward:
+    xp: 85.0
+farmer_hoe_tier5:
+  result:
+    material: DIAMOND_HOE
+    display_name: "§a Elders Farmer Hoe"
+    nbt_id: "farmer_hoe_tier5"
+    enchantments: { EFFICIENCY: 2, UNBREAKING: 2 }
+  shape:
+    - " WW"
+    - " S "
+    - " S "
+  ingredients:
+    W: { material: EMERALD_BLOCK }
+    S: { material: STICK }
+  requirements:
+    job: FARMER
+    level: 80
+  reward:
+    xp: 180.0
+farmer_hoe_tier6:
+  result:
+    material: DIAMOND_HOE
+    display_name: "§c Legendary Farmer Hoe"
+    nbt_id: "farmer_hoe_tier6"
+    enchantments: { EFFICIENCY: 3, UNBREAKING: 3 }
+  shape:
+    - " WW"
+    - " S "
+    - " S "
+  ingredients:
+    W: { material: NETHERITE_BLOCK }
+    S: { material: STICK }
+  requirements:
+    job: FARMER
+    level: 100
+  reward:
+    xp: 350.0
 
+miner_pickaxe_tier1:
+  result:
+    material: IRON_PICKAXE
+    display_name: "§a Adepts Mining Pickaxe"
+    nbt_id: "miner_pickaxe_tier1"
+  shape:
+    - "WWW"
+    - " S "
+    - " S "
+  ingredients:
+    W: { material: COBBLESTONE }
+    S: { material: STICK }
+  requirements:
+    job: MINER
+    level: 0
+  reward:
+    xp: 3.0
+miner_pickaxe_tier2:
+  result:
+    material: IRON_PICKAXE
+    display_name: "§a Experts Mining Pickaxe"
+    nbt_id: "miner_pickaxe_tier2"
+    enchantments: { EFFICIENCY: 1 }
+  shape:
+    - "WWW"
+    - " S "
+    - " S "
+  ingredients:
+    W: { material: IRON_BLOCK }
+    S: { material: STICK }
+  requirements:
+    job: MINER
+    level: 15
+  reward:
+    xp: 12.0
+miner_pickaxe_tier3:
+  result:
+    material: IRON_PICKAXE
+    display_name: "§a Masters Mining Pickaxe"
+    nbt_id: "miner_pickaxe_tier3"
+    enchantments: { EFFICIENCY: 2, UNBREAKING: 1 }
+  shape:
+    - "WWW"
+    - " S "
+    - " S "
+  ingredients:
+    W: { material: LAPIS_BLOCK }
+    S: { material: STICK }
+  requirements:
+    job: MINER
+    level: 35
+  reward:
+    xp: 30.0
+miner_pickaxe_tier4:
+  result:
+    material: DIAMOND_PICKAXE
+    display_name: "§a Grandmasters Mining Pickaxe"
+    nbt_id: "miner_pickaxe_tier4"
+    enchantments: { EFFICIENCY: 1, UNBREAKING: 1 }
+  shape:
+    - "WWW"
+    - " S "
+    - " S "
+  ingredients:
+    W: { material: DIAMOND_BLOCK }
+    S: { material: STICK }
+  requirements:
+    job: MINER
+    level: 50
+  reward:
+    xp: 85.0
+miner_pickaxe_tier5:
+  result:
+    material: DIAMOND_PICKAXE
+    display_name: "§a Elders Mining Pickaxe"
+    nbt_id: "miner_pickaxe_tier5"
+    enchantments: { EFFICIENCY: 2, UNBREAKING: 2 }
+  shape:
+    - "WWW"
+    - " S "
+    - " S "
+  ingredients:
+    W: { material: EMERALD_BLOCK }
+    S: { material: STICK }
+  requirements:
+    job: MINER
+    level: 80
+  reward:
+    xp: 180.0
+miner_pickaxe_tier6:
+  result:
+    material: DIAMOND_PICKAXE
+    display_name: "§c Legendary Mining Pickaxe"
+    nbt_id: "miner_pickaxe_tier6"
+    enchantments: { EFFICIENCY: 3, UNBREAKING: 3 }
+  shape:
+    - "WWW"
+    - " S "
+    - " S "
+  ingredients:
+    W: { material: NETHERITE_BLOCK }
+    S: { material: STICK }
+  requirements:
+    job: MINER
+    level: 100
+  reward:
+    xp: 350.0

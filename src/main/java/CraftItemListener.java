@@ -51,9 +51,6 @@ public class CraftItemListener implements Listener {
         double currentLevelXp = xpManager.getXpForLevel(currentLevel);
         double nextLevelXp = xpManager.getXpForLevel(currentLevel + 1);
 
-        player.setLevel(currentLevel);
-        player.setExp((float) ((currentXp - currentLevelXp) / (nextLevelXp - currentLevelXp)));
-
         bossbarManager.update(player, job, currentXp, currentLevelXp, nextLevelXp, currentLevel);
     }
 }
